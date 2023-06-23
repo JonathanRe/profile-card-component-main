@@ -63,26 +63,51 @@ body {
     line-height: 1.6;
     color: var(--clr-neutral-400);
     background-color: var(--clr-primary-400);
-    background-image: 
-        url(./images/bg-pattern-top.svg),
-        url(./images/bg-pattern-bottom.svg);
-    background-position: top left, bottom right;
-    background-repeat: no-repeat, no-repeat;
     padding: 0 1.5rem;
     display: grid;
     place-content: center;
     min-height: 100vh;
     place-items: center;
+    overflow: hidden;
 }
 
 .card {
-    overflow: hidden;
+    position: relative;
     border-radius: 1rem;
     background-color: var(--clr-neutral-100);
     text-align: center;
+    font-size: var(--fs-600);
+    box-shadow: 0 0 50px 10px hsla(184, 74%, 15%, 0.1);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    background-image: url(./images/bg-pattern-top.svg);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    width: 60rem;
+    aspect-ratio: 1;
+    top: -45rem;
+    left: -50rem;
+    z-index: -1;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    background-image: url(./images/bg-pattern-bottom.svg);
+    background-position: top left;
+    background-repeat: no-repeat;
+    width: 60rem;
+    bottom: -46rem;
+    right: -48rem;
+    aspect-ratio: 1;
+    z-index: -1;
 }
 
 .card__header {
+    border-radius: 1rem 1rem 0 0 ;
     height: 140px;
     background-image: url(./images/bg-pattern-card.svg);
     position: relative;
@@ -105,11 +130,13 @@ body {
 .stats {
     border-top: 1px solid var(--clr-neutral-200);
     padding: 1.5rem 2.75rem;
+    list-style: none;
 }
 
-.name-and-age,
-.stats__value {
-    font-size: var(--fs-600);
+.name-and-age {
+    display: flex;
+    place-content: center;
+    gap: .5rem;
 }
 
 .name,
@@ -118,6 +145,7 @@ body {
     color: var(--clr-secondary-600);
 }
 
-.name {
-    margin-right: 5px;
+.location,
+.stats__description {
+    font-size: var(--fs-400);
 }
